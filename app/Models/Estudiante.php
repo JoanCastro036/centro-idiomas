@@ -11,7 +11,6 @@ class Estudiante extends Model
 
     protected $table = 'estudiantes';
 
-    // Estos son los campos obligatorios del Caso 24
     protected $fillable = [
         'nombre_completo',
         'telefono',

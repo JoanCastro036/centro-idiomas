@@ -10,13 +10,14 @@ return new class extends Migration
     {
         Schema::create('estudiantes', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_completo');
-            $table->string('telefono');
-            $table->string('email');
-            $table->string('idioma');
-            $table->string('nivel_actual');
-            $table->string('estado')->default('activo'); // activo, pausado, graduado, retirado
-            $table->timestamps(); // Esto crea 'created_at' (fecha de inscripción)
+            $table->string('nombre_completo'); // Requisito: Nombre solicitado
+            $table->string('telefono');        // Requisito: Teléfono solicitado
+            $table->string('email');           // Requisito: Email solicitado
+            $table->string('idioma');          // Requisito: Idioma solicitado
+            $table->string('nivel_actual');    // Requisito: Nivel solicitado
+            // El estado permite no borrar registros como pidió el director
+            $table->enum('estado', ['activo', 'pausado', 'graduado', 'retirado'])->default('activo');
+            $table->timestamps(); // Registra fecha de inscripción automáticamente
         });
     }
 
